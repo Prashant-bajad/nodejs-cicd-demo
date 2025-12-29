@@ -28,9 +28,9 @@ pipeline {
         }
         stage('Deploy') {
     steps {
-        script {
+        sshagent(['app-server-ssh']) {
             sh """
-                ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${APP_SERVER} '
+                ssh -o StrictHostKeyChecking=no ${APP_SERVER} '
                     aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPO}
                     docker pull ${ECR_REPO}:latest
                     docker stop nodejs-app || true
@@ -40,7 +40,7 @@ pipeline {
             """
         }
     }
- }
+}
     }
 }
 
