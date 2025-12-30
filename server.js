@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
                 <div class="greeting">
                     कैसे हो पवन कोली 🙏
                 </div>
-                <p><strong>Build:</strong> ${new Date().toLocaleString()}</p>
+                 
             </div>
         </body></html>
     `);
