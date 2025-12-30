@@ -3,6 +3,13 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
+    // IST timezone ke liye
+    const currentTime = new Date().toLocaleString('en-IN', { 
+        timeZone: 'Asia/Kolkata',
+        dateStyle: 'medium',
+        timeStyle: 'medium'
+    });
+    
     res.send(`
         <html>
         <head><title>CI/CD Demo v2.0</title>
@@ -14,39 +21,22 @@ app.get('/', (req, res) => {
             h1 { color: #667eea; }
             .badge { background: #28a745; color: white; padding: 10px 20px; 
                     border-radius: 25px; margin: 10px; display: inline-block; }
-            .build-time {
-                color: #666;
-                font-size: 14px;
-                margin: 20px 0;
-            }
-            .greeting {
-                font-size: 24px;
-                color: #764ba2;
-                font-weight: bold;
-                margin-top: 30px;
-                padding: 20px;
-                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            }
         </style></head>
         <body>
             <div class="container">
                 <h1>🚀 CI/CD Success v2.0!</h1>
                 <p>Jenkins + Docker + ECR + EC2</p>
                 <div>
-                    <span class="badge">Jenkins</span>
-                    <span class="badge">Docker</span>
-                    <span class="badge">AWS ECR</span>
-                    <span class="badge">EC2</span>
+                    <span class="badge">✅ Jenkins</span>
+                    <span class="badge">🐳 Docker</span>
+                    <span class="badge">☁️ AWS ECR</span>
+                    <span class="badge">⚙️ EC2</span>
                 </div>
-                <p><strong>Build:</strong> ${new Date().toLocaleString()}</p>
-                 <p class="build-time"><strong>Build Time:</strong> ${currentTime}</p>
+                <p class="build-time"><strong>Build Time:</strong> ${currentTime}</p>
                 <div class="greeting">
                     कैसे हो पवन कोली 🙏
                 </div>
+                <p><strong>Build:</strong> ${new Date().toLocaleString()}</p>
             </div>
         </body></html>
     `);
