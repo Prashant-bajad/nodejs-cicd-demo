@@ -33,9 +33,9 @@ app.get('/', (req, res) => {
                     <span class="badge">⚙️ EC2</span>
                 </div>
                 <p class="build-time"><strong>Build Time:</strong> ${currentTime}</p>
-                <div class="greeting">
+                <h2 class="greeting">
                     कैसे हो पवन कोली 🙏
-                </div>
+                </h2>
                  
             </div>
         </body></html>
